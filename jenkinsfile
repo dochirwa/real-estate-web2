@@ -9,10 +9,10 @@ node('appserver')
 
         stage('Build-and-Tag')
         {
-            app = docker.build('dchirwa/real-estate-web2:latest')
+            app = docker.build('dchirwa/real-estate-web2')
         }
 
-        stage('Push-to-DockerHub')
+        stage('Post-to-DockerHub')
         {
             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials')
             {

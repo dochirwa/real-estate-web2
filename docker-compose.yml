@@ -1,7 +1,7 @@
 version: '2.4'
 services:
 	apache:
-		image: dchirwa/real-estate-web2:latest
+		image: 'dchirwa/real-estate-web2'
 		ports:
 		- '80:80'
 		volumes:
