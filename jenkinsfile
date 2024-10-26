@@ -1,0 +1,26 @@
+node('appserver')
+{
+    stage('Cloning Git')
+    {
+        checkout scm
+    }
+
+    stage('Build and Tag')
+    {
+        app = docker.build('dchirwa/real-estate-web2')
+    }
+
+    stage('Push to DockerHub')
+    {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-creds')
+        {
+            app.push('latest')
+        }
+    }
+
+    stage('Deploy')
+    {
+        sh 'docker-compose down'
+        sh 'docker-compose up -d'
+    }
+}
