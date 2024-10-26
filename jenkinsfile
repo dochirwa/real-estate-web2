@@ -9,7 +9,7 @@ node('appserver')
 
         stage('Build-and-Tag')
         {
-            app = docker.build('dchirwa/real-estate-web2')
+            app = docker.build('dchirwa/real-estate-web2:latest')
         }
 
         stage('Push-to-DockerHub')
